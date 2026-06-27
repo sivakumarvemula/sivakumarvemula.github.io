@@ -5,31 +5,59 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Siva Kumar Vemula — Business AI & Innovation Programs, SAP Labs India</title>
-  <meta name="description" content="Innovation and AI leader at SAP Labs India. Business AI Dev Expert, Head of Innovation Programs. Editor of A Letter from AI.">
+  <title>Siva Kumar Vemula — Head of Innovation Programs, SAP Labs India</title>
+  <meta name="description" content="Head of Innovation Programs at SAP Labs India's MD's Office. Driving AI transformation at SAP — amplifying AI in engineering and bringing AI into SAP's products. Developer at heart, writing code with AI every day. Editor of A Letter from AI.">
+  <meta name="theme-color" content="#070809">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Siva Kumar Vemula — Head of Innovation Programs, SAP Labs India">
+  <meta property="og:description" content="Beyond the prompt: driving AI transformation at SAP. Developer at heart, building, looping, and delivering with AI every day.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
+    /* ─── Tokens ─────────────────────────────────────────────────────── */
     :root {
-      --bg: #0c0c0e;
-      --bg-elev: #141417;
-      --bg-card: #16161a;
-      --line: rgba(255, 255, 255, 0.08);
-      --line-strong: rgba(255, 255, 255, 0.14);
-      --ink: #f5f5f0;
-      --ink-dim: rgba(245, 245, 240, 0.62);
-      --ink-mute: rgba(245, 245, 240, 0.42);
-      --accent: #ffb86b;          /* warm amber */
-      --accent-soft: #ffd9a8;
-      --accent-glow: rgba(255, 184, 107, 0.14);
-      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      --serif: 'Instrument Serif', 'Times New Roman', serif;
-      --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-      --max: 1180px;
-      --pad: clamp(20px, 4vw, 56px);
+      /* Surface */
+      --bg:           #07080a;
+      --bg-1:         #0c0e12;
+      --bg-2:         #11141a;
+      --bg-3:         #161a22;
+      --grid:         rgba(255, 255, 255, 0.025);
+      --line:         rgba(255, 255, 255, 0.07);
+      --line-mid:     rgba(255, 255, 255, 0.12);
+      --line-strong:  rgba(255, 255, 255, 0.20);
+
+      /* Ink */
+      --ink:          #e7ecef;
+      --ink-dim:      rgba(231, 236, 239, 0.62);
+      --ink-mute:     rgba(231, 236, 239, 0.40);
+      --ink-faint:    rgba(231, 236, 239, 0.20);
+
+      /* Accents — cyber blue primary, amber secondary, magenta for code keywords */
+      --agent:        #5eb8ff;   /* online / status / active — cyber blue */
+      --agent-deep:   #2d8eff;
+      --agent-glow:   rgba(94, 184, 255, 0.18);
+      --agent-soft:   rgba(94, 184, 255, 0.08);
+
+      --warn:         #ffb86b;   /* highlight / featured */
+      --warn-glow:    rgba(255, 184, 107, 0.14);
+
+      --code:         #8ab4ff;   /* code/string accent */
+      --code-magenta: #ff7ad9;   /* keyword accent in code blocks */
+      --code-cyan:    #5eead4;   /* secondary code accent */
+
+      /* Type */
+      --sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --mono:  'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+      /* Layout */
+      --max:   1240px;
+      --pad:   clamp(20px, 4vw, 56px);
+      --radius: 6px;
+      --radius-lg: 12px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -38,39 +66,53 @@
       background: var(--bg);
       color: var(--ink);
       font-family: var(--sans);
+      font-feature-settings: 'ss01', 'cv11';
       font-weight: 400;
       font-size: 16px;
       line-height: 1.55;
+      letter-spacing: -0.005em;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
     }
-    a { color: inherit; text-decoration: none; transition: color .2s ease, opacity .2s ease; }
+    a { color: inherit; text-decoration: none; transition: color .2s ease, opacity .2s ease, border-color .2s ease; }
     img { max-width: 100%; display: block; }
-    ::selection { background: var(--accent); color: #1a1a1a; }
+    button { font: inherit; color: inherit; background: transparent; border: 0; cursor: pointer; }
+    ::selection { background: var(--agent); color: #001022; }
 
-    /* Ambient gradient */
+    /* ─── Background: subtle grid + canvas mesh ──────────────────────── */
+    .grid-bg {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 120% 80% at 50% 0%, #000 30%, transparent 90%);
+      -webkit-mask-image: radial-gradient(ellipse 120% 80% at 50% 0%, #000 30%, transparent 90%);
+    }
     .ambient {
       position: fixed; inset: 0; pointer-events: none; z-index: 0;
       background:
-        radial-gradient(900px 600px at 85% -10%, rgba(255, 184, 107, 0.08), transparent 60%),
-        radial-gradient(700px 500px at -10% 30%, rgba(120, 140, 255, 0.06), transparent 60%);
+        radial-gradient(900px 600px at 80% -10%, var(--agent-glow), transparent 60%),
+        radial-gradient(700px 500px at -10% 20%, rgba(138, 180, 255, 0.07), transparent 60%);
     }
-
+    #mesh {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
+    }
     .wrap {
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 2;
       max-width: var(--max);
       margin: 0 auto;
       padding: 0 var(--pad);
     }
 
-    /* Nav */
+    /* ─── Nav ────────────────────────────────────────────────────────── */
     nav {
       position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      background: rgba(12, 12, 14, 0.72);
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      background: rgba(7, 8, 10, 0.72);
       border-bottom: 1px solid var(--line);
     }
     nav .wrap {
@@ -78,316 +120,612 @@
       height: 64px;
     }
     .brand {
-      font-family: var(--serif);
-      font-size: 22px;
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: var(--mono);
+      font-size: 13px;
       letter-spacing: -0.01em;
+      color: var(--ink);
     }
-    .brand em { color: var(--accent); font-style: italic; }
-    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .brand .avatar {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: var(--bg-2);
+      border: 1px solid var(--line-mid);
+      object-fit: cover;
+    }
+    .brand .name { font-weight: 500; }
+    .brand .slash { color: var(--ink-mute); margin: 0 2px; }
+    .brand .role { color: var(--agent); }
+    .nav-right { display: flex; align-items: center; gap: 28px; }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
     .nav-links a {
-      font-size: 13px; color: var(--ink-dim);
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink-dim);
       letter-spacing: 0.01em;
     }
-    .nav-links a:hover { color: var(--ink); }
-    @media (max-width: 720px) {
+    .nav-links a:hover { color: var(--agent); }
+    .nav-links a .hash { color: var(--ink-faint); margin-right: 2px; }
+    @media (max-width: 820px) {
       .nav-links { display: none; }
+      .brand .slash, .brand .role { display: none; }
     }
 
-    /* Hero */
+    /* ─── Status chip ─────────────────────────────────────────────────── */
+    .status-chip {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-dim);
+      padding: 6px 12px;
+      border: 1px solid var(--line-mid);
+      border-radius: 99px;
+      background: rgba(94, 184, 255, 0.04);
+    }
+    .status-chip .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--agent);
+      box-shadow: 0 0 0 0 var(--agent-glow);
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+    .status-chip .sep { color: var(--ink-faint); }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(94, 184, 255, 0.45); }
+      50%      { box-shadow: 0 0 0 8px rgba(94, 184, 255, 0); }
+    }
+
+    /* ─── Hero ───────────────────────────────────────────────────────── */
     .hero {
-      padding: clamp(70px, 14vh, 140px) 0 clamp(80px, 12vh, 130px);
+      position: relative;
+      padding: clamp(72px, 14vh, 140px) 0 clamp(80px, 12vh, 120px);
       border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: clamp(40px, 6vw, 80px);
+      align-items: start;
+    }
+    @media (max-width: 1000px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
     }
     .eyebrow {
       display: inline-flex; align-items: center; gap: 10px;
       font-family: var(--mono);
-      font-size: 12px;
+      font-size: 11px;
       color: var(--ink-mute);
-      letter-spacing: 0.04em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
     }
-    .pulse {
+    .eyebrow .pulse-dot {
       width: 8px; height: 8px; border-radius: 50%;
-      background: var(--accent); box-shadow: 0 0 0 0 var(--accent-glow);
-      animation: pulse 2.4s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(255, 184, 107, 0.35); }
-      50% { box-shadow: 0 0 0 10px rgba(255, 184, 107, 0); }
+      background: var(--agent);
+      animation: pulse 2.2s ease-in-out infinite;
     }
     h1.lede {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(40px, 7vw, 84px);
-      line-height: 1.02;
-      letter-spacing: -0.02em;
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: clamp(34px, 5vw, 60px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
       max-width: 920px;
+      /* Reserve vertical space so the typing animation doesn't push content down.
+         The headline wraps to 4 lines on desktop (≤ ~1100px column), more on narrow phones.
+         We reserve max-expected line count × clamped line-height. */
+      min-height: calc(clamp(34px, 5vw, 60px) * 1.05 * 4);
     }
-    h1.lede em { color: var(--accent); font-style: italic; }
+    @media (max-width: 720px) {
+      h1.lede { min-height: calc(clamp(34px, 5vw, 60px) * 1.05 * 6); }
+    }
+    h1.lede .typed {
+      display: inline;
+      color: var(--ink);
+    }
+    h1.lede .accent { color: var(--agent); }
+    h1.lede .caret {
+      display: inline-block;
+      width: 4px;
+      height: 0.85em;
+      vertical-align: -0.08em;
+      background: var(--agent);
+      margin-left: 4px;
+      animation: caret 1s steps(2) infinite;
+    }
+    @keyframes caret { 50% { opacity: 0; } }
+
     .lede-sub {
-      max-width: 640px;
-      margin-top: 32px;
-      font-size: clamp(16px, 1.6vw, 19px);
+      max-width: 600px;
+      margin-top: 28px;
+      font-size: clamp(16px, 1.5vw, 18px);
       line-height: 1.6;
       color: var(--ink-dim);
     }
-    .hero-meta {
-      margin-top: 44px;
-      display: flex; flex-wrap: wrap; gap: 14px 22px;
+    .lede-sub strong { color: var(--ink); font-weight: 500; }
+    .lede-sub em { color: var(--agent); font-style: normal; font-weight: 500; }
+
+    .hero-cta {
+      margin-top: 36px;
+      display: flex; flex-wrap: wrap; gap: 12px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
       font-family: var(--mono);
       font-size: 12px;
-      color: var(--ink-mute);
+      padding: 12px 18px;
+      border: 1px solid var(--line-mid);
+      border-radius: 99px;
+      color: var(--ink);
+      transition: border-color .2s ease, background .2s ease, color .2s ease, transform .2s ease;
     }
-    .hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
-    .hero-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--ink-mute); }
+    .btn:hover { border-color: var(--agent); background: var(--agent-soft); color: var(--agent); transform: translateY(-1px); }
+    .btn.primary { background: var(--agent); color: #001022; border-color: var(--agent); font-weight: 600; }
+    .btn.primary:hover { background: var(--agent-deep); border-color: var(--agent-deep); color: #001022; transform: translateY(-1px); }
+    .btn .arrow { transition: transform .2s ease; }
+    .btn:hover .arrow { transform: translateX(2px); }
 
-    /* Section scaffolding */
+    /* Hero terminal card */
+    .terminal {
+      position: relative;
+      border: 1px solid var(--line-mid);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+      box-shadow: 0 30px 80px -40px rgba(0,0,0,0.7), 0 0 0 1px rgba(94,184,255,0.06) inset;
+      overflow: hidden;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      line-height: 1.65;
+    }
+    .terminal-bar {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,0.015);
+    }
+    .terminal-bar .dot-r, .terminal-bar .dot-y, .terminal-bar .dot-g {
+      width: 11px; height: 11px; border-radius: 50%;
+    }
+    .terminal-bar .dot-r { background: #ff5f57; }
+    .terminal-bar .dot-y { background: #febc2e; }
+    .terminal-bar .dot-g { background: #28c840; }
+    .terminal-bar .title {
+      margin-left: 8px;
+      color: var(--ink-mute);
+      font-size: 11px;
+      letter-spacing: 0.02em;
+    }
+    .terminal-body {
+      padding: 18px 20px 22px;
+      color: var(--ink-dim);
+    }
+    .terminal-body .prompt { color: var(--agent); }
+    .terminal-body .cmd { color: var(--ink); }
+    .terminal-body .out { color: var(--ink-dim); }
+    .terminal-body .key { color: var(--code-magenta); }
+    .terminal-body .str { color: var(--code); }
+    .terminal-body .num { color: var(--warn); }
+    .terminal-body .com { color: var(--ink-faint); }
+    .terminal-body .ok  { color: var(--agent); }
+    .terminal-body .line { display: block; }
+    .terminal-body .line + .line { margin-top: 2px; }
+    .blink { animation: caret 1s steps(2) infinite; color: var(--agent); }
+
+    /* ─── Section scaffolding ────────────────────────────────────────── */
     section.block {
+      position: relative;
       padding: clamp(80px, 11vh, 130px) 0;
       border-bottom: 1px solid var(--line);
     }
     .section-head {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 60px;
-      margin-bottom: 64px;
+      margin-bottom: 56px;
+      max-width: 880px;
     }
-    @media (max-width: 820px) {
-      .section-head { grid-template-columns: 1fr; gap: 12px; margin-bottom: 48px; }
-    }
-    .section-num {
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--accent);
-      letter-spacing: 0.06em;
-    }
-    .section-title {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(28px, 4vw, 44px);
-      line-height: 1.1;
-      letter-spacing: -0.015em;
-      max-width: 720px;
-    }
-    .section-title em { color: var(--accent); font-style: italic; }
     .section-kicker {
-      grid-column: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       font-family: var(--mono);
       font-size: 11px;
       color: var(--ink-mute);
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding-top: 12px;
+      margin-bottom: 22px;
     }
+    .section-kicker::before {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--agent);
+      opacity: 0.6;
+    }
+    .section-icon {
+      width: 14px; height: 14px;
+      color: var(--agent);
+      flex-shrink: 0;
+      margin-right: -2px;
+    }
+    .section-kicker .hash { color: var(--agent); }
+    .section-title {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      max-width: 760px;
+    }
+    .section-title .accent { color: var(--agent); }
+    .section-lede {
+      margin-top: 18px;
+      max-width: 640px;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink-dim);
+    }
+    .section-lede em { color: var(--ink); font-style: normal; font-weight: 500; }
 
-    /* About */
+    /* ─── About / code block bio ─────────────────────────────────────── */
     .about-grid {
       display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 60px;
+      grid-template-columns: 1.1fr 1fr;
+      gap: clamp(40px, 6vw, 80px);
+      align-items: start;
     }
-    @media (max-width: 820px) { .about-grid { grid-template-columns: 1fr; gap: 24px; } }
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
     .about-body p {
-      font-size: 18px;
+      font-size: 17px;
       line-height: 1.65;
       color: var(--ink);
-      max-width: 720px;
+      max-width: 640px;
     }
-    .about-body p + p { margin-top: 22px; color: var(--ink-dim); }
-    .about-body em { color: var(--accent-soft); font-style: italic; }
+    .about-body p + p { margin-top: 20px; color: var(--ink-dim); }
+    .about-body em { color: var(--agent); font-style: normal; font-weight: 500; }
 
-    /* Now / pillars */
-    .pillars {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1px;
-      background: var(--line);
+    .codecard {
       border: 1px solid var(--line);
-      border-radius: 4px;
+      border-radius: var(--radius-lg);
+      background: var(--bg-1);
+      font-family: var(--mono);
+      font-size: 12.5px;
+      line-height: 1.75;
       overflow: hidden;
     }
-    .pillar {
-      background: var(--bg);
-      padding: 32px 28px;
-      transition: background .25s ease;
+    .codecard-head {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--line);
+      color: var(--ink-mute);
+      font-size: 11px;
     }
-    .pillar:hover { background: var(--bg-elev); }
-    .pillar-tag {
+    .codecard-head .lang {
+      color: var(--agent);
+    }
+    .codecard pre {
+      padding: 18px 20px;
+      margin: 0;
+      overflow-x: auto;
+      color: var(--ink-dim);
+    }
+    .codecard .key { color: var(--code-magenta); }
+    .codecard .str { color: var(--code); }
+    .codecard .num { color: var(--warn); }
+    .codecard .com { color: var(--ink-faint); }
+    .codecard .fn  { color: var(--agent); }
+
+    /* ─── Now / Pillars (bento) ──────────────────────────────────────── */
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+    }
+    .bento .cell {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--bg-1);
+      padding: 28px;
+      transition: border-color .25s ease, background .25s ease, transform .25s ease;
+      overflow: hidden;
+    }
+    .bento .cell::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(400px 200px at 100% 0%, var(--agent-soft), transparent 60%);
+      opacity: 0;
+      transition: opacity .35s ease;
+      pointer-events: none;
+    }
+    .bento .cell:hover { border-color: var(--line-mid); transform: translateY(-2px); }
+    .bento .cell:hover::before { opacity: 1; }
+    .bento .cell.wide { grid-column: span 4; }
+    .bento .cell.half { grid-column: span 2; }
+    .bento .cell.third { grid-column: span 2; }
+    @media (max-width: 900px) {
+      .bento { grid-template-columns: 1fr; }
+      .bento .cell.wide, .bento .cell.half, .bento .cell.third { grid-column: span 1; }
+    }
+    .cell-tag {
+      display: inline-flex; align-items: center; gap: 9px;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--agent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .cell-tag .bullet { width: 6px; height: 6px; border-radius: 50%; background: var(--agent); }
+    .cell-icon {
+      width: 16px; height: 16px;
+      color: var(--agent);
+      flex-shrink: 0;
+    }
+    .cell h3 {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .cell p {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--ink-dim);
+    }
+    .cell p em { color: var(--ink); font-style: normal; font-weight: 500; }
+    .cell .metric {
+      margin-top: 18px;
+      display: flex; align-items: baseline; gap: 10px;
       font-family: var(--mono);
       font-size: 11px;
-      color: var(--accent);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
+      color: var(--ink-mute);
     }
-    .pillar h3 {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: 24px;
-      line-height: 1.2;
-      margin-bottom: 12px;
-      letter-spacing: -0.01em;
-    }
-    .pillar p {
-      font-size: 14px;
-      line-height: 1.55;
-      color: var(--ink-dim);
+    .cell .metric strong {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 28px;
+      color: var(--agent);
+      letter-spacing: -0.02em;
     }
 
-    /* Stat row */
-    .stats {
-      margin-top: 56px;
+    /* Stat strip */
+    .stat-strip {
+      margin-top: 32px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 28px;
-      padding: 32px 0;
-      border-top: 1px solid var(--line);
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--bg-1);
+    }
+    @media (max-width: 720px) {
+      .stat-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+    .stat-cell {
+      padding: 28px 24px;
+      border-right: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
     }
+    .stat-cell:last-child { border-right: 0; }
+    @media (max-width: 720px) {
+      .stat-cell:nth-child(2n) { border-right: 0; }
+      .stat-cell:nth-last-child(-n+2) { border-bottom: 0; }
+    }
+    @media (min-width: 721px) {
+      .stat-cell { border-bottom: 0; }
+    }
     .stat-num {
-      font-family: var(--serif);
-      font-size: 44px;
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 38px;
       line-height: 1;
-      letter-spacing: -0.02em;
-      color: var(--accent);
+      letter-spacing: -0.03em;
+      color: var(--agent);
     }
     .stat-label {
-      margin-top: 8px;
-      font-size: 13px;
+      margin-top: 10px;
+      font-family: var(--mono);
+      font-size: 11.5px;
       color: var(--ink-dim);
-      line-height: 1.4;
+      line-height: 1.45;
     }
 
-    /* Experience timeline */
+    /* ─── Experience ─────────────────────────────────────────────────── */
     .xp-list { display: grid; gap: 0; }
     .xp-row {
       display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 60px;
-      padding: 32px 0;
+      grid-template-columns: 200px 1fr auto;
+      gap: 40px;
+      padding: 28px 0;
       border-top: 1px solid var(--line);
-      transition: background .25s ease;
+      transition: background .25s ease, padding .25s ease;
+      position: relative;
     }
     .xp-row:last-child { border-bottom: 1px solid var(--line); }
-    .xp-row:hover { background: linear-gradient(90deg, var(--accent-glow), transparent 40%); }
-    @media (max-width: 820px) {
-      .xp-row { grid-template-columns: 1fr; gap: 8px; }
+    .xp-row::before {
+      content: '';
+      position: absolute;
+      left: -20px; top: 0; bottom: 0;
+      width: 2px;
+      background: var(--agent);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform .3s ease;
+    }
+    .xp-row:hover::before { transform: scaleY(1); }
+    .xp-row:hover { padding-left: 8px; }
+    @media (max-width: 900px) {
+      .xp-row { grid-template-columns: 1fr; gap: 6px; padding: 24px 0; }
     }
     .xp-date {
       font-family: var(--mono);
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--ink-mute);
       letter-spacing: 0.04em;
       padding-top: 6px;
     }
     .xp-role {
-      font-family: var(--serif);
-      font-size: 22px;
-      line-height: 1.25;
-      letter-spacing: -0.005em;
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 19px;
+      line-height: 1.3;
+      letter-spacing: -0.015em;
     }
     .xp-company {
-      font-size: 13px;
-      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--agent);
       margin: 6px 0 12px;
-      font-weight: 500;
     }
     .xp-desc {
-      font-size: 15px;
-      line-height: 1.55;
+      font-size: 14.5px;
+      line-height: 1.6;
       color: var(--ink-dim);
       max-width: 680px;
     }
+    .xp-tag {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--ink-mute);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding-top: 10px;
+      white-space: nowrap;
+    }
+    @media (max-width: 900px) {
+      .xp-tag { padding-top: 8px; }
+    }
 
-    /* Projects */
+    /* ─── Projects ───────────────────────────────────────────────────── */
     .projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
     }
     .project {
       position: relative;
       border: 1px solid var(--line);
-      border-radius: 6px;
-      padding: 28px;
-      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      background: var(--bg-1);
       transition: border-color .25s ease, transform .25s ease, background .25s ease;
       display: flex; flex-direction: column;
       min-height: 220px;
+      overflow: hidden;
+    }
+    .project::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--agent), transparent);
+      opacity: 0;
+      transition: opacity .3s ease;
     }
     .project:hover {
-      border-color: var(--line-strong);
-      transform: translateY(-2px);
-      background: var(--bg-elev);
+      border-color: var(--line-mid);
+      transform: translateY(-3px);
+      background: var(--bg-2);
     }
+    .project:hover::after { opacity: 1; }
     .project-head {
       display: flex; justify-content: space-between; align-items: flex-start;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
     .project-tag {
       font-family: var(--mono);
       font-size: 10px;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding: 4px 8px;
-      border: 1px solid var(--line-strong);
+      padding: 4px 10px;
+      border: 1px solid var(--line-mid);
       border-radius: 99px;
       color: var(--ink-dim);
     }
-    .project-tag.featured { border-color: var(--accent); color: var(--accent); }
+    .project-tag.featured {
+      border-color: var(--agent);
+      color: var(--agent);
+      background: var(--agent-soft);
+    }
     .project-arrow {
-      font-size: 18px;
+      font-family: var(--mono);
+      font-size: 16px;
       color: var(--ink-mute);
       transition: transform .25s ease, color .25s ease;
     }
-    .project:hover .project-arrow { color: var(--accent); transform: translate(2px, -2px); }
+    .project:hover .project-arrow { color: var(--agent); transform: translate(3px, -3px); }
     .project h3 {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: 26px;
-      line-height: 1.15;
-      margin-bottom: 12px;
-      letter-spacing: -0.01em;
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 21px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
     }
     .project p {
       font-size: 14px;
-      line-height: 1.55;
+      line-height: 1.6;
       color: var(--ink-dim);
       flex-grow: 1;
     }
     .project-meta {
       margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--line);
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 10.5px;
       color: var(--ink-mute);
       letter-spacing: 0.04em;
     }
+    .project-meta .ok-dot {
+      display: inline-block;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--agent);
+      margin-right: 6px;
+      vertical-align: 1px;
+    }
 
-    /* Writing */
+    /* ─── Writing ────────────────────────────────────────────────────── */
     .writing-intro {
       max-width: 720px;
-      font-size: 17px;
-      line-height: 1.6;
+      font-size: 16.5px;
+      line-height: 1.65;
       color: var(--ink-dim);
-      margin-bottom: 48px;
+      margin-bottom: 40px;
     }
-    .writing-intro a { color: var(--accent); border-bottom: 1px solid var(--accent-glow); }
-    .writing-intro a:hover { border-bottom-color: var(--accent); }
-    .posts { display: grid; gap: 0; }
+    .writing-intro a {
+      color: var(--agent);
+      border-bottom: 1px solid var(--agent-soft);
+    }
+    .writing-intro a:hover { border-bottom-color: var(--agent); }
+    .posts {
+      display: grid; gap: 0;
+      border-top: 1px solid var(--line);
+    }
     .post {
       display: grid;
-      grid-template-columns: 110px 1fr 24px;
-      gap: 32px;
-      padding: 24px 0;
-      border-top: 1px solid var(--line);
+      grid-template-columns: 130px 1fr 32px;
+      gap: 28px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
       align-items: baseline;
-      transition: padding .25s ease;
+      transition: padding .25s ease, background .25s ease;
+      position: relative;
     }
-    .post:last-of-type { border-bottom: 1px solid var(--line); }
-    .post:hover { padding-left: 8px; }
-    .post:hover .post-title { color: var(--accent); }
-    .post:hover .post-arrow { color: var(--accent); transform: translateX(4px); }
+    .post::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: var(--agent);
+      transform: scaleY(0);
+      transition: transform .25s ease;
+    }
+    .post:hover::before { transform: scaleY(1); }
+    .post:hover { padding-left: 14px; }
+    .post:hover .post-title { color: var(--agent); }
+    .post:hover .post-arrow { color: var(--agent); transform: translateX(4px); }
     .post-date {
       font-family: var(--mono);
       font-size: 11px;
@@ -395,117 +733,129 @@
       letter-spacing: 0.04em;
     }
     .post-title {
-      font-family: var(--serif);
-      font-size: 22px;
-      line-height: 1.3;
-      letter-spacing: -0.005em;
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 17.5px;
+      line-height: 1.35;
+      letter-spacing: -0.015em;
       transition: color .2s ease;
     }
     .post-arrow {
+      font-family: var(--mono);
       color: var(--ink-mute);
       transition: color .25s ease, transform .25s ease;
-      font-size: 16px;
+      font-size: 14px;
       justify-self: end;
     }
     @media (max-width: 720px) {
-      .post { grid-template-columns: 1fr 24px; gap: 8px; }
+      .post { grid-template-columns: 1fr 24px; gap: 6px; }
       .post-date { grid-column: 1 / -1; }
     }
 
-    /* Skills */
+    /* ─── Skills ─────────────────────────────────────────────────────── */
     .skill-cols {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 48px 40px;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 36px 24px;
     }
     .skill-col h4 {
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 500;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 18px;
-      padding-bottom: 14px;
+      color: var(--agent);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
       border-bottom: 1px solid var(--line);
     }
-    .skill-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .skill-col h4 .hash { color: var(--ink-faint); margin-right: 4px; }
+    .skill-col ul { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
     .skill-col li {
-      font-size: 14px;
+      font-family: var(--mono);
+      font-size: 11.5px;
       color: var(--ink-dim);
-      line-height: 1.5;
+      padding: 5px 10px;
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      background: var(--bg-1);
+      transition: border-color .2s ease, color .2s ease;
     }
-    .skill-col li::before {
-      content: '·  ';
-      color: var(--ink-mute);
-    }
+    .skill-col li:hover { border-color: var(--agent); color: var(--agent); }
 
-    /* Awards inline list */
+    /* ─── Awards ─────────────────────────────────────────────────────── */
     .awards {
       margin-top: 56px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0;
+      border-top: 1px solid var(--line);
     }
     .award {
-      padding: 20px 0;
-      border-top: 1px solid var(--line);
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+      padding-right: 24px;
     }
     .award-year {
       font-family: var(--mono);
       font-size: 11px;
-      color: var(--accent);
+      color: var(--agent);
       letter-spacing: 0.04em;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
-    .award-name { font-size: 15px; line-height: 1.4; }
-    .award-issuer { font-size: 13px; color: var(--ink-mute); margin-top: 4px; }
+    .award-name {
+      font-size: 15.5px;
+      line-height: 1.4;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+    .award-issuer {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--ink-mute);
+      margin-top: 4px;
+    }
 
-    /* Contact / CTA */
+    /* ─── CTA ────────────────────────────────────────────────────────── */
     .cta {
       padding: clamp(80px, 14vh, 160px) 0;
+      position: relative;
       text-align: center;
+      overflow: hidden;
+    }
+    .cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(700px 300px at 50% 50%, var(--agent-soft), transparent 70%);
+      pointer-events: none;
+    }
+    .cta .wrap { position: relative; }
+    .cta-prompt {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--agent);
+      margin-bottom: 24px;
     }
     .cta-text {
-      font-family: var(--serif);
-      font-size: clamp(36px, 6vw, 64px);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      max-width: 800px;
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: clamp(32px, 5.5vw, 56px);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      max-width: 820px;
       margin: 0 auto 40px;
     }
-    .cta-text em { color: var(--accent); font-style: italic; }
+    .cta-text .accent { color: var(--agent); }
     .cta-links {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 16px 32px;
-      font-family: var(--mono);
-      font-size: 13px;
+      gap: 12px;
     }
-    .cta-links a {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 14px 22px;
-      border: 1px solid var(--line-strong);
-      border-radius: 99px;
-      color: var(--ink);
-      transition: border-color .25s ease, background .25s ease, color .25s ease;
-    }
-    .cta-links a:hover {
-      border-color: var(--accent);
-      background: var(--accent-glow);
-      color: var(--accent);
-    }
-    .cta-links a.primary {
-      background: var(--accent);
-      color: #1a1a1a;
-      border-color: var(--accent);
-    }
-    .cta-links a.primary:hover { background: var(--accent-soft); border-color: var(--accent-soft); }
 
-    /* Footer */
+    /* ─── Footer ─────────────────────────────────────────────────────── */
     footer {
-      padding: 40px 0;
+      padding: 32px 0;
       border-top: 1px solid var(--line);
       font-family: var(--mono);
       font-size: 11px;
@@ -515,16 +865,18 @@
     footer .wrap {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 12px;
     }
-    footer a:hover { color: var(--accent); }
+    footer a { color: var(--ink-dim); }
+    footer a:hover { color: var(--agent); }
 
-    /* Reveal */
+    /* ─── Reveal ─────────────────────────────────────────────────────── */
     .reveal {
       opacity: 0;
       transform: translateY(20px);
-      transition: opacity .8s ease, transform .8s ease;
+      transition: opacity .7s ease, transform .7s ease;
     }
     .reveal.in {
       opacity: 1;
@@ -532,55 +884,137 @@
     }
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; }
-      .pulse { animation: none; }
+      .pulse-dot, .status-chip .dot, .blink, .caret { animation: none; }
     }
   </style>
 </head>
 
 <body>
+  <div class="grid-bg" aria-hidden="true"></div>
   <div class="ambient" aria-hidden="true"></div>
 
   <nav>
     <div class="wrap">
-      <a class="brand" href="#top">Siva <em>Kumar</em></a>
-      <ul class="nav-links">
-        <li><a href="#now">Now</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#writing">Writing</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+      <a class="brand" href="#top">
+        <img class="avatar" src="images/profile.jpg" alt="" loading="lazy" onerror="this.style.display='none'">
+        <span class="name">siva.kumar.vemula</span><span class="slash">/</span><span class="role">innovation</span>
+      </a>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="#now"><span class="hash">#</span>now</a></li>
+          <li><a href="#experience"><span class="hash">#</span>experience</a></li>
+          <li><a href="#projects"><span class="hash">#</span>projects</a></li>
+          <li><a href="#writing"><span class="hash">#</span>writing</a></li>
+          <li><a href="#contact"><span class="hash">#</span>contact</a></li>
+        </ul>
+        <span class="status-chip" title="Live agent status">
+          <span class="dot" aria-hidden="true"></span>
+          <span>online</span>
+          <span class="sep">·</span>
+          <span>SAP&nbsp;Labs&nbsp;India</span>
+        </span>
+      </div>
     </div>
   </nav>
 
   <header id="top" class="hero">
+    <canvas id="mesh" aria-hidden="true"></canvas>
     <div class="wrap">
-      <div class="eyebrow reveal">
-        <span class="pulse" aria-hidden="true"></span>
-        SAP Labs India · MD's Office · Bengaluru
-      </div>
-      <h1 class="lede reveal">
-        Driving <em>Business AI</em> adoption and innovation programs for 14,000+ engineers at SAP.
-      </h1>
-      <p class="lede-sub reveal">
-        I'm Siva — a Business AI Dev Expert and Head of Innovation Programs at SAP Labs India. Nearly 14 years deep in SAP's technical stack, now leading where developer community, large-scale events, and applied AI intersect.
-      </p>
-      <div class="hero-meta reveal">
-        <span><span class="dot"></span>14 yrs at SAP</span>
-        <span><span class="dot"></span>IIM Bangalore · AI &amp; Business Stats</span>
-        <span><span class="dot"></span>Editor, <em style="font-style:italic">A Letter from AI</em></span>
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow reveal">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            Head of Innovation Programs · MD's Office · SAP Labs India
+          </div>
+          <h1 class="lede reveal" id="lede" aria-label="Beyond the prompt: Teaching engineers to build, loop, and deliver with AI.">
+            <span class="typed" id="typedTarget"></span><span class="caret" aria-hidden="true"></span>
+          </h1>
+          <p class="lede-sub reveal">
+            I'm <strong>Siva</strong> — <strong>Head of Innovation Programs</strong> at SAP Labs India's MD's Office, driving <em>SAP's AI transformation</em>. Two missions: <em>amplify AI usage in our engineering teams</em>, and <em>bring AI into the products we build</em>. <strong>Developer at heart</strong> — I write code with AI every day, which is how I stay current with the agentic-coding practices I teach.
+          </p>
+          <div class="hero-cta reveal">
+            <a class="btn primary" href="#contact"><span>get in touch</span><span class="arrow">→</span></a>
+            <a class="btn" href="https://sivakumarvemula.substack.com/" target="_blank" rel="noopener"><span>A Letter from AI</span><span class="arrow">↗</span></a>
+            <a class="btn" href="#projects"><span>see the work</span><span class="arrow">↓</span></a>
+          </div>
+        </div>
+
+        <div class="terminal reveal" role="img" aria-label="Terminal showing agent status: programs, adoption, engineering">
+          <div class="terminal-bar">
+            <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+            <span class="title">~/agent · siva@sap-labs · zsh</span>
+          </div>
+          <div class="terminal-body">
+            <span class="line"><span class="com"># booting agent context...</span></span>
+            <span class="line"><span class="prompt">$</span> <span class="cmd">whoami</span></span>
+            <span class="line"><span class="out">siva-kumar-vemula</span></span>
+            <span class="line"><span class="prompt">$</span> <span class="cmd">cat ./identity.json</span></span>
+            <span class="line"><span class="out">{</span></span>
+            <span class="line"><span class="out">&nbsp;&nbsp;<span class="key">"role"</span>:&nbsp;&nbsp;<span class="str">"Head of Innovation Programs"</span>,</span></span>
+            <span class="line"><span class="out">&nbsp;&nbsp;<span class="key">"drives"</span>: <span class="str">"AI transformation at SAP"</span>,</span></span>
+            <span class="line"><span class="out">&nbsp;&nbsp;<span class="key">"org"</span>:&nbsp;&nbsp;&nbsp;<span class="str">"SAP Labs India · MD's Office"</span>,</span></span>
+            <span class="line"><span class="out">&nbsp;&nbsp;<span class="key">"mission"</span>: [</span></span>
+            <span class="line"><span class="out">&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"amplify AI in engineering"</span>,</span></span>
+            <span class="line"><span class="out">&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"AI into SAP products"</span></span></span>
+            <span class="line"><span class="out">&nbsp;&nbsp;],</span></span>
+            <span class="line"><span class="out">&nbsp;&nbsp;<span class="key">"hands_on"</span>: <span class="str">"developer at heart · codes daily with AI"</span></span></span>
+            <span class="line"><span class="out">}</span></span>
+            <span class="line"><span class="prompt">$</span> <span class="cmd">agent.status</span></span>
+            <span class="line"><span class="ok">● online · ctx 200k · ready to collaborate</span></span>
+            <span class="line"><span class="prompt">$</span> <span class="blink">▍</span></span>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
   <section class="block" id="about">
     <div class="wrap">
+      <div class="section-head reveal">
+        <div class="section-kicker">
+          <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a7 7 0 0 1 14 0v1"/></svg>
+          <span class="hash">#</span>00 · about
+        </div>
+        <h2 class="section-title">Driving <span class="accent">AI transformation</span> at SAP.</h2>
+      </div>
+
       <div class="about-grid">
-        <div class="section-kicker">About</div>
         <div class="about-body reveal">
-          <p>I work from <em>SAP Labs India's Managing Director's Office</em>, holding two concurrent roles: Business AI Dev Expert and Head of Innovation Programs. The day-to-day is part strategy, part hands-on building — shaping how SAP's engineering community adopts AI, and designing the programs that get them there.</p>
-          <p>My technical roots run deep — ABAP, WebDynpro, full-stack on SAP UI5/Node, then five years as Cloud Architect on SAP BTP. That foundation is what makes the AI work land: I can speak to both the boardroom narrative and the JWT auth flow in the same conversation.</p>
-          <p>Outside the day job, I'm pursuing an AI &amp; Business Statistics program at IIM Bangalore, and writing <em>A Letter from AI</em> — a weekly newsletter on the intersection of AI and software development.</p>
+          <p>I'm <em>Head of Innovation Programs</em> at SAP Labs India's Managing Director's Office. The mandate is direct: <em>drive AI transformation at SAP</em>. We do that through programs, initiatives, and events — enabling, scaling, and embedding AI across our engineering organization. Two outcomes we're after: <em>amplify how engineers use AI in their day-to-day work</em>, and <em>bring AI into the SAP products we ship</em>.</p>
+          <p>The job is leadership, but I'm a <em>developer at heart</em>. I write code with AI every day — Claude Code, Copilot, MCP servers — and I learn the development concepts as they evolve. That daily practice keeps me current with the agentic-coding craft, and it's why my teaching lands: the loops, harnesses, and prompting techniques I share aren't theory, they're what I just used to ship something.</p>
+          <p>Fourteen years at SAP underneath all of this — ABAP and WebDynpro early, full-stack on SAP UI5/Node, five years as Cloud Architect on SAP BTP. So when I talk AI transformation, it's grounded in how real software actually gets built at scale.</p>
+          <p>Beyond the day job: pursuing <em>AI &amp; Business Statistics</em> at IIM Bangalore, and writing <em>A Letter from AI</em> — a weekly newsletter on AI-assisted software development, read by 650+ engineers and leaders.</p>
+        </div>
+
+        <div class="codecard reveal" aria-hidden="true">
+          <div class="codecard-head">
+            <span>./identity.ts</span>
+            <span class="lang">typescript</span>
+          </div>
+<pre><span class="key">const</span> <span class="fn">siva</span> = {
+  <span class="key">name</span>: <span class="str">"Siva Kumar Vemula"</span>,
+  <span class="key">role</span>: <span class="str">"Head of Innovation Programs"</span>,
+  <span class="key">at</span>:   <span class="str">"SAP Labs India · MD's Office"</span>,
+  <span class="key">since</span>: <span class="num">2012</span>,
+
+  <span class="com">// the mandate</span>
+  <span class="key">drives</span>: <span class="str">"AI transformation at SAP"</span>,
+
+  <span class="com">// two outcomes we ship for</span>
+  <span class="key">missions</span>: [
+    <span class="str">"amplify AI in engineering"</span>,
+    <span class="str">"AI into SAP products"</span>,
+  ],
+
+  <span class="com">// developer at heart — codes daily with AI</span>
+  <span class="key">handsOn</span>: {
+    <span class="key">tools</span>: [<span class="str">"Claude Code"</span>, <span class="str">"Copilot"</span>, <span class="str">"MCP"</span>],
+    <span class="key">practices</span>: [<span class="str">"agentic coding"</span>, <span class="str">"loop eng."</span>, <span class="str">"harness eng."</span>],
+  },
+
+  <span class="key">writes</span>:  <span class="str">"A Letter from AI"</span>,
+  <span class="key">studies</span>: <span class="str">"IIM-B · AI &amp; Biz Stats"</span>,
+};</pre>
         </div>
       </div>
     </div>
@@ -589,44 +1023,98 @@
   <section class="block" id="now">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="section-kicker">01 · Now</div>
-        <h2 class="section-title">Three things <em>I'm shaping</em> right now.</h2>
+        <div class="section-kicker">
+          <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l1.5 4 4 1.5-4 1.5L12 13l-1.5-4-4-1.5 4-1.5z"/><path d="M19 14l.8 2.2 2.2.8-2.2.8L19 20l-.8-2.2-2.2-.8 2.2-.8z"/><path d="M5 14l.7 1.8 1.8.7-1.8.7L5 19l-.7-1.8L2.5 16.5l1.8-.7z"/></svg>
+          <span class="hash">#</span>01 · now · the continuous practice
+        </div>
+        <h2 class="section-title">What I'm <span class="accent">doing every week.</span></h2>
+        <p class="section-lede">Not a list of events — a list of <em>ways of working</em>. The craft I practice, teach, and write about, on repeat.</p>
       </div>
 
-      <div class="pillars reveal">
-        <div class="pillar">
-          <div class="pillar-tag">Programs</div>
-          <h3>d-com 2026</h3>
-          <p>Content Lead for SAP Labs India's flagship Developer Festival — reaching 14,000+ engineers across Bengaluru, Pune, and Gurugram editions. Introduced three new session formats, including <em>The Terminal</em>: a portal where developers showcase raw inventions and research.</p>
+      <div class="bento reveal">
+        <div class="cell wide">
+          <div class="cell-tag">
+            <svg class="cell-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2v3M12 19v3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M2 12h3M19 12h3M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/>
+              <circle cx="12" cy="12" r="4"/>
+            </svg>
+            <span>the craft · core</span>
+          </div>
+          <h3>The Art of Working with AI</h3>
+          <p>The thing most people miss: AI is a <em>collaborator</em>, not a search bar. I teach how to talk to it, frame intent, give it context, recover from bad turns, and steer it toward the answer you actually need. <em>Prompting is a discipline</em> — and it's the multiplier behind every other AI workflow that works.</p>
+          <div class="metric"><strong>650+</strong><span>readers learning along · <em>A Letter from AI</em></span></div>
         </div>
-        <div class="pillar">
-          <div class="pillar-tag">Adoption</div>
-          <h3>AI Way of Working</h3>
-          <p>Designed and delivered enablement to 300+ SAP Services colleagues on practical AI adoption, the art of prompting, and unlocking AI in day-to-day work. Editor of <em>A Letter from AI</em>, weekly, 650+ subscribers.</p>
-        </div>
-        <div class="pillar">
-          <div class="pillar-tag">Engineering</div>
-          <h3>Agentic SDLC</h3>
-          <p>Spearheading SAP's shift from traditional development to agentic engineering — building an autonomous macOS supervisor agent that orchestrates end-to-end task lifecycles. Integrating GitHub Copilot and Claude Code into the SDLC.</p>
-        </div>
-      </div>
 
-      <div class="stats reveal">
-        <div>
-          <div class="stat-num">14,000+</div>
-          <div class="stat-label">developers reached at d-com 2026</div>
+        <div class="cell half">
+          <div class="cell-tag">
+            <svg class="cell-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 12a9 9 0 1 0 3-6.7"/>
+              <polyline points="3 4 3 10 9 10"/>
+            </svg>
+            <span>discipline</span>
+          </div>
+          <h3>Loop Engineering</h3>
+          <p>Designing the cycle the AI runs inside: <em>plan → act → verify → reflect → iterate</em>. Where to checkpoint, when to branch, how to detect drift, and how to keep humans usefully in the loop.</p>
         </div>
-        <div>
-          <div class="stat-num">5,800+</div>
-          <div class="stat-label">registrations at SAP Inside Track Bengaluru Q1'26</div>
+
+        <div class="cell half">
+          <div class="cell-tag">
+            <svg class="cell-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+              <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+              <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+              <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+              <path d="M10 6.5h4M6.5 10v4M17.5 10v4M10 17.5h4"/>
+            </svg>
+            <span>discipline</span>
+          </div>
+          <h3>Harness Engineering</h3>
+          <p>The scaffolding around the model — tools, MCP servers, hooks, permissions, sub-agents. A well-built harness is the difference between an AI that talks and an AI that <em>ships</em>.</p>
         </div>
-        <div>
-          <div class="stat-num">300+</div>
-          <div class="stat-label">SAP Services colleagues enabled in AI Way of Working</div>
+
+        <div class="cell half">
+          <div class="cell-tag">
+            <svg class="cell-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="8 4 4 12 8 20"/>
+              <polyline points="16 4 20 12 16 20"/>
+              <line x1="14" y1="4" x2="10" y2="20"/>
+            </svg>
+            <span>daily stack</span>
+          </div>
+          <h3>Claude · Copilot · MCP</h3>
+          <p>Where the practice meets the keyboard. <em>Claude Code</em> and <em>GitHub Copilot</em> are my daily drivers; MCP servers wire them into real engineering systems. I learn here, then I teach what works.</p>
         </div>
-        <div>
-          <div class="stat-num">650+</div>
-          <div class="stat-label"><em style="font-style:italic">A Letter from AI</em> subscribers</div>
+
+        <div class="cell half">
+          <div class="cell-tag">
+            <svg class="cell-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+            <span>enablement</span>
+          </div>
+          <h3>Labs India Enablement</h3>
+          <p>From the MD's Office I lead innovation and tech enablement across SAP Labs India — <em>workshops, sessions, hackathons</em>. Anything that helps engineers level up on AI and emerging tech.</p>
+        </div>
+
+        <div class="cell wide">
+          <div class="cell-tag">
+            <svg class="cell-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="17" rx="2"/>
+              <line x1="3" y1="9" x2="21" y2="9"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <circle cx="8" cy="14" r="1" fill="currentColor"/>
+              <circle cx="12" cy="14" r="1" fill="currentColor"/>
+              <circle cx="16" cy="14" r="1" fill="currentColor"/>
+            </svg>
+            <span>events · I lead</span>
+          </div>
+          <h3>d-com · SIT Bengaluru · AI Hackathons</h3>
+          <p>Content lead for <em>d-com 2026</em>, SAP Labs India's flagship developer festival (14,000+ engineers, 3 cities). Lead for <em>SAP Inside Track Bengaluru</em> — the community day for developers across India. Plus the steady drumbeat of AI-focused hackathons and tech meetups across the labs.</p>
+          <div class="metric"><strong>14k+</strong><span>engineers reached · d-com 2026 · SIT BLR · workshops</span></div>
         </div>
       </div>
     </div>
@@ -635,18 +1123,56 @@
   <section class="block" id="experience">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="section-kicker">02 · Experience</div>
-        <h2 class="section-title">Fourteen years, <em>one company</em>, four arcs.</h2>
+        <div class="section-kicker">
+          <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
+          <span class="hash">#</span>02 · experience
+        </div>
+        <h2 class="section-title">Fifteen years, <span class="accent">one company</span>, five roles — <span class="accent">developer all along.</span></h2>
+      </div>
+
+      <!-- Career arc visual -->
+      <div class="arc-wrap reveal">
+        <ol class="arc" aria-label="Career progression at SAP, 2011 to present">
+          <li class="arc-step">
+            <div class="arc-dot" aria-hidden="true"></div>
+            <div class="arc-year">2011</div>
+            <div class="arc-role">ABAP Developer</div>
+          </li>
+          <li class="arc-step">
+            <div class="arc-dot" aria-hidden="true"></div>
+            <div class="arc-year">2014</div>
+            <div class="arc-role">Java &amp; Full-Stack Developer</div>
+          </li>
+          <li class="arc-step">
+            <div class="arc-dot" aria-hidden="true"></div>
+            <div class="arc-year">2016</div>
+            <div class="arc-role">Product Owner</div>
+          </li>
+          <li class="arc-step">
+            <div class="arc-dot" aria-hidden="true"></div>
+            <div class="arc-year">2022</div>
+            <div class="arc-role">Cloud Architect</div>
+          </li>
+          <li class="arc-step is-current">
+            <div class="arc-dot" aria-hidden="true"></div>
+            <div class="arc-year">2025 · now</div>
+            <div class="arc-role">Head of Innovation Programs</div>
+          </li>
+        </ol>
+        <div class="arc-undertow" aria-hidden="true">
+          <span class="arc-undertow-label">developer · all along</span>
+        </div>
       </div>
 
       <div class="xp-list reveal">
         <div class="xp-row">
-          <div class="xp-date">Mar 2025 — Now</div>
+          <div class="xp-date">Mar 2025 — now</div>
           <div>
-            <div class="xp-role">Business AI Dev Expert &amp; Head of Innovation Programs</div>
+            <div class="xp-role">Head of Innovation Programs</div>
             <div class="xp-company">SAP Labs India · MD's Office</div>
-            <p class="xp-desc">Driving Business AI adoption across Lines of Business; leading content for d-com 2026 (14,000+ developers); built and launched Employee Hub — an internal app that digitized the entire event lifecycle. Service Excellence Award 2026.</p>
+            <p class="xp-desc">Driving SAP's AI transformation through programs, initiatives, and events — enabling, scaling, and embedding AI across our engineering organization. Two missions: amplify AI usage in engineering, and bring AI into the products we build. Content lead for d-com 2026 (14,000+ developers); leading SIT Bengaluru and AI hackathons. Developer at heart — write code with AI daily, which keeps the agentic-coding craft I teach honest. Service Excellence Award, 2026.</p>
           </div>
+          <div class="xp-tag">current</div>
         </div>
         <div class="xp-row">
           <div class="xp-date">Apr 2022 — Mar 2025</div>
@@ -655,6 +1181,7 @@
             <div class="xp-company">SAP · 3 yrs</div>
             <p class="xp-desc">Architected cloud-native solutions on SAP Business Technology Platform with Cloud Identity Services, XSUAA, and JWT-based auth flows. Led the d-shop maker space — SAP Labs India's in-house hardware and IoT experimentation lab.</p>
           </div>
+          <div class="xp-tag">arc 03</div>
         </div>
         <div class="xp-row">
           <div class="xp-date">Oct 2016 — Mar 2022</div>
@@ -663,6 +1190,7 @@
             <div class="xp-company">SAP · 5 yrs 6 mos</div>
             <p class="xp-desc">Owned roadmap and delivery for cloud services offerings. Received the SAP Award &amp; Recognition — Global Cloud Services Mentor (Sep 2021) for sustained contribution to mentoring the global cloud services community.</p>
           </div>
+          <div class="xp-tag">arc 02</div>
         </div>
         <div class="xp-row">
           <div class="xp-date">Sep 2012 — Sep 2016</div>
@@ -671,6 +1199,7 @@
             <div class="xp-company">SAP · 4 yrs</div>
             <p class="xp-desc">Associate Developer (2014–16) and ABAP WebDynpro Consultant (2012–14). Built internal and external tools across SAP's ERP and S/4HANA stack. Earlier: ABAP Developer at ERP and ERP Corp (2012–14), Developer at TechHub (2011–12).</p>
           </div>
+          <div class="xp-tag">arc 01</div>
         </div>
       </div>
     </div>
@@ -679,8 +1208,11 @@
   <section class="block" id="projects">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="section-kicker">03 · Projects</div>
-        <h2 class="section-title">Open-source tools I build under <em>Botle</em>.</h2>
+        <div class="section-kicker">
+          <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M6 8.5v7"/><path d="M8.5 18h7"/></svg>
+          <span class="hash">#</span>03 · projects
+        </div>
+        <h2 class="section-title">Open-source tools I build under <span class="accent">Botle</span>.</h2>
       </div>
 
       <p class="writing-intro reveal">
@@ -690,62 +1222,62 @@
       <div class="projects reveal">
         <a class="project" href="https://github.com/BotleApps/check-list" target="_blank" rel="noopener">
           <div class="project-head">
-            <span class="project-tag featured">★ Featured · AI</span>
+            <span class="project-tag featured">★ featured · ai</span>
             <span class="project-arrow">↗</span>
           </div>
           <h3>Checklist AI</h3>
           <p>Task manager using smart templates to map out repeatable processes — AI prompt generation, pre-built templates, clone &amp; share.</p>
-          <div class="project-meta">Web App · TypeScript</div>
+          <div class="project-meta"><span class="ok-dot"></span>web · typescript</div>
         </a>
 
         <a class="project" href="https://github.com/BotleApps/ai-day-planner" target="_blank" rel="noopener">
           <div class="project-head">
-            <span class="project-tag">AI</span>
+            <span class="project-tag">ai</span>
             <span class="project-arrow">↗</span>
           </div>
           <h3>Day Planner AI</h3>
           <p>Context-aware activity scheduler for trips, events, and daily plans. AI-driven scheduling, group sharing, itinerary management.</p>
-          <div class="project-meta">Web App · AI-Powered</div>
+          <div class="project-meta"><span class="ok-dot"></span>web · ai-powered</div>
         </a>
 
         <a class="project" href="https://github.com/BotleApps/shopping-list" target="_blank" rel="noopener">
           <div class="project-head">
-            <span class="project-tag">AI</span>
+            <span class="project-tag">ai</span>
             <span class="project-arrow">↗</span>
           </div>
           <h3>Shopping List AI</h3>
           <p>Family-oriented grocery and inventory manager with predictive tracking, price comparison, and AI-generated lists.</p>
-          <div class="project-meta">Web App · AI-Powered</div>
+          <div class="project-meta"><span class="ok-dot"></span>web · ai-powered</div>
         </a>
 
         <a class="project" href="https://github.com/BotleApps/My-Dashboard" target="_blank" rel="noopener">
           <div class="project-head">
-            <span class="project-tag">Web</span>
+            <span class="project-tag">web</span>
             <span class="project-arrow">↗</span>
           </div>
           <h3>My Dashboard</h3>
           <p>A data visualization hub for tracking KPIs — custom modular layouts, multiple dashboards, statistical trends.</p>
-          <div class="project-meta">Web App · Data Viz</div>
+          <div class="project-meta"><span class="ok-dot"></span>web · data-viz</div>
         </a>
 
         <a class="project" href="https://github.com/BotleApps/Mark-It-CE" target="_blank" rel="noopener">
           <div class="project-head">
-            <span class="project-tag">Extension</span>
+            <span class="project-tag">extension</span>
             <span class="project-arrow">↗</span>
           </div>
           <h3>Mark IT</h3>
           <p>Browser extension for organizing bookmarks at scale — spaces &amp; groups, drag-and-drop, import/export, instant search.</p>
-          <div class="project-meta">Chrome Extension</div>
+          <div class="project-meta"><span class="ok-dot"></span>chrome-extension</div>
         </a>
 
         <a class="project" href="https://github.com/BotleApps/StandBy-Screen" target="_blank" rel="noopener">
           <div class="project-head">
-            <span class="project-tag">Web</span>
+            <span class="project-tag">web</span>
             <span class="project-arrow">↗</span>
           </div>
           <h3>StandBy Screen</h3>
           <p>Pre-meeting display tool with countdown timers, welcome screens, and agenda displays for professional settings.</p>
-          <div class="project-meta">Web App</div>
+          <div class="project-meta"><span class="ok-dot"></span>web</div>
         </a>
       </div>
     </div>
@@ -754,53 +1286,56 @@
   <section class="block" id="writing">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="section-kicker">04 · Writing</div>
-        <h2 class="section-title"><em>A Letter from AI</em> — weekly, on the intersection of AI and software development.</h2>
+        <div class="section-kicker">
+          <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="14" y2="17"/></svg>
+          <span class="hash">#</span>04 · writing
+        </div>
+        <h2 class="section-title"><span class="accent">A Letter from AI</span> — weekly, on AI &amp; software development.</h2>
       </div>
 
       <p class="writing-intro reveal">
-        Subscribe to the newsletter on <a href="https://sivakumarvemula.substack.com/" target="_blank" rel="noopener">Substack →</a> Here's what 650+ subscribers have been reading lately.
+        Subscribe on <a href="https://sivakumarvemula.substack.com/" target="_blank" rel="noopener">Substack →</a> Here's what 650+ subscribers have been reading lately.
       </p>
 
       <div class="posts reveal">
         <a class="post" href="https://sivakumarvemula.substack.com/p/beyond-the-blindfold-how-chrome-devtools" target="_blank" rel="noopener">
-          <div class="post-date">Oct 10, 2025</div>
+          <div class="post-date">2025 · 10 · 10</div>
           <div class="post-title">Beyond the Blindfold: How Chrome DevTools MCP is the Leap Forward for Agentic Web Development</div>
           <div class="post-arrow">→</div>
         </a>
         <a class="post" href="https://sivakumarvemula.substack.com/p/the-ultimate-combo-accelerate-with" target="_blank" rel="noopener">
-          <div class="post-date">Oct 8, 2025</div>
+          <div class="post-date">2025 · 10 · 08</div>
           <div class="post-title">The Ultimate Combo: Accelerate with AI Code Agents, Fortify with VibeKit Guardrails</div>
           <div class="post-arrow">→</div>
         </a>
         <a class="post" href="https://sivakumarvemula.substack.com/p/claude-sonnet-45-revolutionizing" target="_blank" rel="noopener">
-          <div class="post-date">Oct 3, 2025</div>
+          <div class="post-date">2025 · 10 · 03</div>
           <div class="post-title">Claude Sonnet 4.5: Revolutionizing AI-Assisted Coding</div>
           <div class="post-arrow">→</div>
         </a>
         <a class="post" href="https://sivakumarvemula.substack.com/p/the-next-phase-of-vibe-coding-spec" target="_blank" rel="noopener">
-          <div class="post-date">Sep 11, 2025</div>
+          <div class="post-date">2025 · 09 · 11</div>
           <div class="post-title">The Next Phase of Vibe Coding: Spec-Driven Development</div>
           <div class="post-arrow">→</div>
         </a>
         <a class="post" href="https://sivakumarvemula.substack.com/p/prompt-to-production-secure-vibe" target="_blank" rel="noopener">
-          <div class="post-date">Aug 11, 2025</div>
-          <div class="post-title">Prompt to Production: Secure Vibe Coding and the Skills You Need for the Next Wave of AI-Native Development</div>
+          <div class="post-date">2025 · 08 · 11</div>
+          <div class="post-title">Prompt to Production: Secure Vibe Coding and the Skills for the Next Wave of AI-Native Development</div>
           <div class="post-arrow">→</div>
         </a>
         <a class="post" href="https://sivakumarvemula.substack.com/p/master-github-copilots-modes-to-supercharge" target="_blank" rel="noopener">
-          <div class="post-date">Jul 28, 2025</div>
+          <div class="post-date">2025 · 07 · 28</div>
           <div class="post-title">Master GitHub Copilot's Modes to Supercharge Your Coding Workflow</div>
           <div class="post-arrow">→</div>
         </a>
         <a class="post" href="https://sivakumarvemula.substack.com/p/why-agentic-ai-is-your-next-coding" target="_blank" rel="noopener">
-          <div class="post-date">Jul 28, 2025</div>
+          <div class="post-date">2025 · 07 · 28</div>
           <div class="post-title">Why Agentic AI is Your Next Coding Superpower</div>
           <div class="post-arrow">→</div>
         </a>
-        <a class="post" href="https://sivakumarvemula.substack.com/archive" target="_blank" rel="noopener">
-          <div class="post-date">All posts</div>
-          <div class="post-title" style="color: var(--accent);">View the full archive on Substack</div>
+        <a class="post" href="https://sivakumarvemula.substack.com/archive" target="_blank" rel="noopener" style="background: linear-gradient(90deg, var(--agent-soft), transparent 70%);">
+          <div class="post-date">archive</div>
+          <div class="post-title" style="color: var(--agent);">View the full archive on Substack</div>
           <div class="post-arrow">→</div>
         </a>
       </div>
@@ -810,58 +1345,74 @@
   <section class="block" id="skills">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="section-kicker">05 · Toolkit</div>
-        <h2 class="section-title">What I <em>actually use</em>.</h2>
+        <div class="section-kicker">
+          <svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.7-3.7a6 6 0 0 1-7.9 7.9l-7 7a2.1 2.1 0 1 1-3-3l7-7a6 6 0 0 1 7.9-7.9z"/></svg>
+          <span class="hash">#</span>05 · toolkit
+        </div>
+        <h2 class="section-title">What I <span class="accent">actually use</span>.</h2>
       </div>
 
       <div class="skill-cols reveal">
         <div class="skill-col">
-          <h4>AI &amp; Agentic</h4>
+          <h4><span class="hash">#</span>ai &amp; agentic</h4>
           <ul>
             <li>Business AI</li>
-            <li>Claude (Code · Sonnet 4.5)</li>
+            <li>Claude · Sonnet 4.5</li>
+            <li>Claude Code</li>
             <li>GitHub Copilot</li>
-            <li>Microsoft Copilot · Gemini</li>
+            <li>Microsoft Copilot</li>
+            <li>Gemini</li>
             <li>Agentic orchestration</li>
             <li>Intent-based prompting</li>
+            <li>MCP servers</li>
           </ul>
         </div>
         <div class="skill-col">
-          <h4>SAP Stack</h4>
+          <h4><span class="hash">#</span>sap stack</h4>
           <ul>
-            <li>SAP BTP / Cloud Platform</li>
+            <li>SAP BTP</li>
             <li>SAP HANA</li>
-            <li>SAP Fiori · SAP UI5</li>
-            <li>ABAP · WebDynpro</li>
-            <li>Cloud Identity · XSUAA · JWT</li>
+            <li>SAP Fiori</li>
+            <li>SAP UI5</li>
+            <li>ABAP</li>
+            <li>WebDynpro</li>
+            <li>Cloud Identity</li>
+            <li>XSUAA</li>
+            <li>JWT</li>
           </ul>
         </div>
         <div class="skill-col">
-          <h4>Cloud &amp; Data</h4>
+          <h4><span class="hash">#</span>cloud &amp; data</h4>
           <ul>
-            <li>Google Cloud Platform · Cloud Run</li>
-            <li>Docker · Vercel</li>
-            <li>SQL · MongoDB Atlas</li>
-            <li>Vercel PostgreSQL</li>
+            <li>GCP · Cloud Run</li>
+            <li>Docker</li>
+            <li>Vercel</li>
+            <li>SQL</li>
+            <li>MongoDB Atlas</li>
+            <li>Postgres</li>
             <li>Firebase Studio</li>
           </ul>
         </div>
         <div class="skill-col">
-          <h4>Languages &amp; ML</h4>
+          <h4><span class="hash">#</span>code &amp; ml</h4>
           <ul>
-            <li>Python · Java · Java EE</li>
-            <li>JavaScript · HTML</li>
-            <li>Machine Learning</li>
-            <li>Natural Language Processing</li>
+            <li>Python</li>
+            <li>TypeScript</li>
+            <li>JavaScript</li>
+            <li>Java · Java EE</li>
+            <li>HTML · CSS</li>
+            <li>ML</li>
+            <li>NLP</li>
             <li>Data Science</li>
           </ul>
         </div>
         <div class="skill-col">
-          <h4>Program &amp; Product</h4>
+          <h4><span class="hash">#</span>program &amp; product</h4>
           <ul>
             <li>Innovation Management</li>
             <li>Business Strategy</li>
             <li>Project Management</li>
+            <li>Event Design</li>
             <li>ClickUp</li>
           </ul>
         </div>
@@ -876,7 +1427,7 @@
         <div class="award">
           <div class="award-year">2024 — 2027</div>
           <div class="award-name">GitHub Copilot Certification</div>
-          <div class="award-issuer">GitHub · Valid through Oct 2027</div>
+          <div class="award-issuer">GitHub · valid through Oct 2027</div>
         </div>
         <div class="award">
           <div class="award-year">2021</div>
@@ -884,7 +1435,7 @@
           <div class="award-issuer">SAP Award &amp; Recognition</div>
         </div>
         <div class="award">
-          <div class="award-year">2025 — Present</div>
+          <div class="award-year">2025 — now</div>
           <div class="award-name">AI &amp; Business Statistics</div>
           <div class="award-issuer">IIM Bangalore</div>
         </div>
@@ -894,36 +1445,27 @@
 
   <section class="cta" id="contact">
     <div class="wrap">
-      <h2 class="cta-text reveal">Let's talk about <em>AI, programs,</em> or the next thing worth building.</h2>
+      <div class="cta-prompt reveal">$ contact --open</div>
+      <h2 class="cta-text reveal">Let's talk <span class="accent">AI, programs,</span> or the next thing worth building.</h2>
       <div class="cta-links reveal">
-        <a class="primary" href="mailto:sivakumarvemula@hotmail.com">
-          <span>Email</span><span>→</span>
-        </a>
-        <a href="https://www.linkedin.com/in/siva-kumar-vemula/" target="_blank" rel="noopener">
-          <span>LinkedIn</span><span>↗</span>
-        </a>
-        <a href="https://sivakumarvemula.substack.com/" target="_blank" rel="noopener">
-          <span>Substack</span><span>↗</span>
-        </a>
-        <a href="https://botle.in/" target="_blank" rel="noopener">
-          <span>Botle</span><span>↗</span>
-        </a>
-        <a href="https://github.com/sivakumarvemula" target="_blank" rel="noopener">
-          <span>GitHub</span><span>↗</span>
-        </a>
+        <a class="btn primary" href="mailto:sivakumarvemula@hotmail.com"><span>email</span><span class="arrow">→</span></a>
+        <a class="btn" href="https://www.linkedin.com/in/siva-kumar-vemula/" target="_blank" rel="noopener"><span>linkedin</span><span class="arrow">↗</span></a>
+        <a class="btn" href="https://sivakumarvemula.substack.com/" target="_blank" rel="noopener"><span>substack</span><span class="arrow">↗</span></a>
+        <a class="btn" href="https://botle.in/" target="_blank" rel="noopener"><span>botle</span><span class="arrow">↗</span></a>
+        <a class="btn" href="https://github.com/sivakumarvemula" target="_blank" rel="noopener"><span>github</span><span class="arrow">↗</span></a>
       </div>
     </div>
   </section>
 
   <footer>
     <div class="wrap">
-      <div>© 2026 Siva Kumar Vemula · Bengaluru, India</div>
-      <div>Built with Claude Code · <a href="https://github.com/sivakumarvemula/sivakumarvemula.github.io">source</a></div>
+      <div>© 2026 · Siva Kumar Vemula · Bengaluru, India</div>
+      <div>built with <a href="https://www.anthropic.com/claude-code" target="_blank" rel="noopener">Claude Code</a> · <a href="https://github.com/sivakumarvemula/sivakumarvemula.github.io" target="_blank" rel="noopener">source</a></div>
     </div>
   </footer>
 
   <script>
-    // Reveal on scroll
+    /* ─── Reveal on scroll ────────────────────────────────────────────── */
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -933,6 +1475,193 @@
       });
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* ─── Typing hero ─────────────────────────────────────────────────── */
+    (function typer() {
+      const target = document.getElementById('typedTarget');
+      if (!target) return;
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // segments: [text, className] — null className = plain ink
+      const segments = [
+        ['Beyond the prompt: ',         'accent'],
+        ['Teaching engineers to ',      null],
+        ['build',                       'accent'],
+        [', ',                          null],
+        ['loop',                        'accent'],
+        [', and ',                      null],
+        ['deliver',                     'accent'],
+        [' with AI.',                   null],
+      ];
+
+      if (reduced) {
+        target.innerHTML = segments.map(([t, c]) =>
+          c ? `<span class="${c}">${t}</span>` : t
+        ).join('');
+        return;
+      }
+
+      let segIdx = 0, charIdx = 0;
+      function step() {
+        if (segIdx >= segments.length) return;
+        const [text, cls] = segments[segIdx];
+
+        // ensure span exists for this segment
+        let span = target.lastElementChild;
+        const expectedCls = cls || '';
+        const lastIsThisSeg = span && (span.dataset.idx === String(segIdx));
+        if (!lastIsThisSeg) {
+          span = document.createElement('span');
+          if (cls) span.className = cls;
+          span.dataset.idx = String(segIdx);
+          target.appendChild(span);
+        }
+
+        span.textContent = text.slice(0, charIdx + 1);
+        charIdx++;
+
+        if (charIdx >= text.length) {
+          segIdx++;
+          charIdx = 0;
+          setTimeout(step, 60);
+        } else {
+          // varied speed: faster on common letters, slight pause on punctuation
+          const ch = text[charIdx - 1];
+          const delay = ',.'.includes(ch) ? 140 : (' '.includes(ch) ? 50 : 22 + Math.floor(((charIdx * 9301 + 49297) % 233377) % 30));
+          setTimeout(step, delay);
+        }
+      }
+      // start slightly after page paint
+      setTimeout(step, 350);
+    })();
+
+    /* ─── Neural mesh canvas (hero) ──────────────────────────────────── */
+    (function mesh() {
+      const canvas = document.getElementById('mesh');
+      if (!canvas) return;
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const ctx = canvas.getContext('2d');
+      const hero = canvas.parentElement;
+
+      let w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const nodes = [];
+      const mouse = { x: -9999, y: -9999, active: false };
+
+      function resize() {
+        const rect = hero.getBoundingClientRect();
+        w = rect.width; h = rect.height;
+        canvas.width = w * dpr; canvas.height = h * dpr;
+        canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        seed();
+      }
+
+      function seed() {
+        nodes.length = 0;
+        // density scales with area, capped for perf
+        const density = Math.min(64, Math.floor((w * h) / 22000));
+        for (let i = 0; i < density; i++) {
+          nodes.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            vx: (Math.random() - 0.5) * 0.18,
+            vy: (Math.random() - 0.5) * 0.18,
+            r: Math.random() * 1.3 + 0.6,
+          });
+        }
+      }
+
+      function step() {
+        ctx.clearRect(0, 0, w, h);
+
+        // update + draw nodes
+        for (const n of nodes) {
+          n.x += n.vx; n.y += n.vy;
+          if (n.x < 0 || n.x > w) n.vx *= -1;
+          if (n.y < 0 || n.y > h) n.vy *= -1;
+
+          // gentle attraction to mouse
+          if (mouse.active) {
+            const dx = mouse.x - n.x, dy = mouse.y - n.y;
+            const d2 = dx*dx + dy*dy;
+            if (d2 < 160*160) {
+              const f = (1 - Math.sqrt(d2) / 160) * 0.015;
+              n.vx += dx * f * 0.02;
+              n.vy += dy * f * 0.02;
+            }
+          }
+          // velocity damping
+          n.vx *= 0.992; n.vy *= 0.992;
+
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(94, 184, 255, 0.55)';
+          ctx.fill();
+        }
+
+        // edges
+        const MAX = 130;
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const a = nodes[i], b = nodes[j];
+            const dx = a.x - b.x, dy = a.y - b.y;
+            const d = Math.sqrt(dx*dx + dy*dy);
+            if (d < MAX) {
+              const alpha = (1 - d / MAX) * 0.22;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.strokeStyle = `rgba(94, 184, 255, ${alpha})`;
+              ctx.lineWidth = 0.6;
+              ctx.stroke();
+            }
+          }
+        }
+
+        // mouse halo
+        if (mouse.active) {
+          const grad = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 180);
+          grad.addColorStop(0, 'rgba(94, 184, 255, 0.10)');
+          grad.addColorStop(1, 'rgba(94, 184, 255, 0)');
+          ctx.fillStyle = grad;
+          ctx.fillRect(0, 0, w, h);
+        }
+
+        raf = requestAnimationFrame(step);
+      }
+
+      let raf = null;
+      function start() { if (!raf) raf = requestAnimationFrame(step); }
+      function stop()  { if (raf) { cancelAnimationFrame(raf); raf = null; } }
+
+      function onMove(e) {
+        const rect = hero.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+        mouse.active = mouse.x >= 0 && mouse.x <= w && mouse.y >= 0 && mouse.y <= h;
+      }
+      function onLeave() { mouse.active = false; mouse.x = -9999; mouse.y = -9999; }
+
+      resize();
+      if (reduced) {
+        // single static frame, no animation
+        for (const n of nodes) { n.vx = 0; n.vy = 0; }
+        step(); stop();
+      } else {
+        start();
+      }
+
+      window.addEventListener('resize', () => { resize(); });
+      hero.addEventListener('mousemove', onMove);
+      hero.addEventListener('mouseleave', onLeave);
+
+      // pause when off-screen
+      const heroIO = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) { if (!reduced) start(); }
+        else stop();
+      });
+      heroIO.observe(hero);
+    })();
   </script>
 </body>
 </html>
